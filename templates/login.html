@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Firebase SAML Demo{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<style>
+    .error-message {
+        color: #e74c3c;
+        background-color: #fdeaea;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 1rem 0;
+        display: none;
+    }
+    .status-message {
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 4px;
+        background-color: #f8f9fa;
+    }
+    .loading {
+        display: inline-block;
+        margin-left: 8px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-box">
+        <h2>Sign In</h2>
+        <div id="status-message" class="status-message">
+            Checking authentication status...
+        </div>
+        <div id="error-message" class="error-message"></div>
+        <button id="sso-button" class="sso-button">
+            Sign in with SSO
+        </button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script type="module" src="{{ url_for('static', filename='js/firebase-config.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

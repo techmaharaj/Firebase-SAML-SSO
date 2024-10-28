@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - SAML SSO Demo{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-card">
+        <h2>Welcome, {{ user.name if user.name else user.email }}</h2>
+        
+        <div class="profile-info">
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>User ID:</strong> {{ user.user_id }}</p>
+        </div>
+
+        <div class="profile-actions">
+            <a href="{{ url_for('index') }}" class="button">Home</a>
+            <a href="{{ url_for('logout') }}" class="button button-secondary">Logout</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .profile-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .profile-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 2rem;
+    }
+
+    .profile-info {
+        margin: 2rem 0;
+    }
+
+    .profile-info p {
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .profile-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .button {
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        text-decoration: none;
+        color: white;
+        background-color: #3498db;
+        transition: background-color 0.3s;
+    }
+
+    .button:hover {
+        background-color: #2980b9;
+    }
+
+    .button-secondary {
+        background-color: #95a5a6;
+    }
+
+    .button-secondary:hover {
+        background-color: #7f8c8d;
+    }
+</style>
+{% endblock %}
